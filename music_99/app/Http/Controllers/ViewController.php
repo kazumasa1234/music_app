@@ -20,12 +20,13 @@ class ViewController extends Controller
 
     public function mypage()
     {
-
-        return view('Music/mypage');
+        $user = \Auth::user();
+        $id = $user->id;
+        $songs = Song::where('user_id', '=', $id)->get();
+        return view('Music/mypage', ['songs' => $songs]);
     }
     public function uplode()
     {
-
         return view('Music/uplode');
     }
 

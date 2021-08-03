@@ -18,7 +18,7 @@ class CreateHitsTable extends Migration
             $table->timestamps();
             $table->string('model')->comment('モデル名');
             $table->integer('parent_id')->comment('モデルのID');
-            $table->string('ip')->comment('IPアドレス');
+
         });
     }
 

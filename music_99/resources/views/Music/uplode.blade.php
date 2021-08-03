@@ -25,9 +25,9 @@
     @endif
 
     <div class="text-center">
-        <div class="pt-5">
-            <img class="w-50 h-50" src="https://picsum.photos/400/400" alt="">
-        </div>
+{{--        <div class="pt-5">--}}
+{{--            <img class="w-50 h-50" src="https://picsum.photos/400/400" alt="">--}}
+{{--        </div>--}}
                     <form class="mt-5 mx-3" method="post" action="{{route('uplode_post')}}" enctype="multipart/form-data">
                         @csrf
                         <label for="formFile" class="form-label ">曲名</label>
@@ -38,6 +38,7 @@
                                    <p class="text-danger">  {{ $message }} </p>
                                 @endforeach
                         @endif
+
                         <label for="formFile" class="form-label mt-3 mb-0">アーティスト</label>
                         <input class="form-control form-control-lg" type="text" placeholder="アーティスト名を入れて下さい"
                                aria-label=".form-control-lg example" name="artist" value="{{ old('artist') }}">
@@ -46,9 +47,22 @@
                                 <p class="text-danger">  {{ $message }} </p>
                             @endforeach
                         @endif
-                        <label for="formFile" class="form-label mt-3">ジャンル</label>
-                        <input class="form-control form-control-lg" type="text" placeholder="ジャンルを入れて下さい"
-                               aria-label=".form-control-lg example" name="category" value="{{ old('category') }}">
+
+                        <label for="formFile" class="form-label mt-3 mb-0">ジャンル</label>
+                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"  name="category" >
+                            <option value="" @if(! old('category')) selected @endif>ジャンルを選んで下さい</option>
+                            @foreach(config('category') as $key => $value)
+                                <option value="{{ $key }}" @if(old('category') == $key) selected @endif>{{ $value }}</option>
+                            @endforeach
+                        </select>
+
+
+
+
+
+{{--                        <label for="formFile" class="form-label mt-3">ジャンル</label>--}}
+{{--                        <input class="form-control form-control-lg" type="text" placeholder="ジャンルを入れて下さい"--}}
+{{--                               aria-label=".form-control-lg example" name="category" value="{{ old('category') }}">--}}
                         @if($errors->has('category'))
                             <p class="text-danger">{{ $errors->first('category') }}</p>
                         @endif

@@ -81,18 +81,25 @@
                 <p class=""><img class="img-fluid w-25 h-25" src="{{$row->img_file_name}}" alt=""></p>
 
                 <ul class="mx-5 list-unstyled">
+                    <i class="fas fa-male"></i>
                     <li class="h1">{{ $row->artist }}</li>
+                    <i class="fas fa-record-vinyl"></i>
                     <li class="h4">{{ $row->song_name }}</li>
+                    <i class="fas fa-guitar"></i>
+                    <li class="h6">{{ $row->category }}</li>
                 </ul>
 
                 <ul class="d-flex push list-unstyled">
+                    <i class="fas fa-headphones"></i>
                     <li class="mx-2">再生回数</li>
+                    <i class="fas fa-thumbs-up"></i>
+{{--                    <i class="far fa-thumbs-up"></i>--}}
                     <li class="mx-2">いいね</li>
+                    <i class="fas fa-download"></i>
                     <li class="mx-2">ダウンロード</li>
                 </ul>
 
             </div>
-
             <hr>
             @endforeach
         </div>
