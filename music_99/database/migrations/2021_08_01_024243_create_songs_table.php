@@ -20,7 +20,7 @@ class CreateSongsTable extends Migration
             $table->string('artist',100);
             // $table->tinyInteger('category');は数字が入るのでシーダーの時に注意
             $table->tinyInteger('category');
-
+            $table->bigInteger('user_id');
             $table->string('img_file_name');
             $table->string('mp3_file_name');
         });

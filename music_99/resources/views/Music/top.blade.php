@@ -75,7 +75,7 @@
             </div>
             <hr>
 
-            @foreach($song as $row)
+            @foreach($songs as $row)
             <div class="d-flex align-items-end flex-wrap pt-5 justify-content-center">
 
                 <p class=""><img class="img-fluid w-25 h-25" src="{{$row->img_file_name}}" alt=""></p>

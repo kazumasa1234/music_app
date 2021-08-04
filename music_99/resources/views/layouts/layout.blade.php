@@ -69,6 +69,7 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                         ホーム
                     </a>
+                    @if(  Auth::check() )
                     <a class="nav-link" href="{{route('uplode')}}">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         曲投稿
@@ -77,6 +78,7 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         マイページ
                     </a>
+                    @endif
                     @if( ! Auth::check() )
                     <a class="nav-link" href="{{ route('register') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>

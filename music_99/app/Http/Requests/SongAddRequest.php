@@ -29,11 +29,13 @@ class SongAddRequest extends FormRequest
             'category' => 'required',
             'img_file_name' => 'required | image |max:20000',
             //@TODO mp3バグ
-            'mp3_file_name' => 'required | mimes:audio/mp3 |max:1000'
+            'mp3_file_name' => 'required'
+//            'mp3_file_name' => 'required | mimes:audio/mp3 |max:1000'
         ];
     }
 
 
+//バリデーション日本語化
     public function messages()
     {
         return [
