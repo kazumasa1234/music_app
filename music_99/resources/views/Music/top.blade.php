@@ -76,6 +76,7 @@
             <hr>
 
             @foreach($songs as $row)
+
             <div class="d-flex align-items-end flex-wrap pt-5 justify-content-center">
 
                 <p class=""><img class="img-fluid w-25 h-25" src="{{$row->img_file_name}}" alt=""></p>
@@ -86,7 +87,7 @@
                     <i class="fas fa-record-vinyl"></i>
                     <li class="h4">{{ $row->song_name }}</li>
                     <i class="fas fa-guitar"></i>
-                    <li class="h6">{{ $row->category }}</li>
+                    <li class="h6">{{ $row->category}}</li>
                 </ul>
 
                 <ul class="d-flex push list-unstyled">
@@ -120,7 +121,8 @@
 
 
         <ul class="d-flex list-unstyled justify-content-sm-between flex-wrap justify-content-center mt-5">
-            <a href="{{route('rock')}}">
+
+            <a href="{{route('category',['category' => 'rock'])}}">
             <li class="my-2 card"><img class="card-img" src="https://picsum.photos/200" alt="">
                 <div class="card-img-overlay">
                     <p class="text-white h2">Rock</p>
@@ -128,7 +130,7 @@
             </li>
             </a>
 
-            <a href="{{route('pop')}}">
+            <a href="{{route('category',['category' => 'pop'])}}">
                 <li class="my-2 card"><img class="card-img" src="https://picsum.photos/200/200" alt="">
                     <div class="card-img-overlay">
                         <p class="text-white h2">Pop</p>
@@ -137,7 +139,7 @@
             </a>
 
 
-            <a href="{{route('punk')}}">
+            <a href="{{route('category',['category' => 'punk'])}}">
                 <li class="my-2 card"><img class="card-img" src="https://picsum.photos/200" alt="">
                     <div class="card-img-overlay">
                         <p class="text-white h2">Punk</p>
@@ -146,7 +148,7 @@
             </a>
 
 
-            <a href="{{route('jazz')}}">
+            <a href="{{route('category',['category' => 'jazz'])}}">
                 <li class="my-2 card"><img class="card-img" src="https://picsum.photos/200/200" alt="">
                     <div class="card-img-overlay">
                         <p class="text-white h2">Jazz</p>

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SongAddRequest extends FormRequest
+class SongEditRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,20 +27,20 @@ class SongAddRequest extends FormRequest
             'artist' => 'required | max:100',
             'song_name' => 'required | max:100',
             'category' => 'required',
-            'img_file_name' => 'required | image |max:20000',
+            'img_file_name' => 'image |max:20000',
             //@TODO mp3バグ
-           'mp3_file_name' => 'required'
+//            'mp3_file_name' => 'required'
 //            'mp3_file_name' => 'required | mimes:audio/mp3 |max:1000'
         ];
     }
 
 
-//バリデーション日本語化
+    //バリデーション日本語化
     public function messages()
     {
         return [
             'artist.required' => 'アーティスト名が入力されていません',
-           'artist.max' => '100文字以内で入力して下さい',
+            'artist.max' => '100文字以内で入力して下さい',
             'song_name.required' => '曲名が入力されていません',
             'song_name.max' => '100文字以内で入力して下さい',
             'category.required' => 'カテゴリーが選ばれていません',

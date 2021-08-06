@@ -12,7 +12,7 @@ class ViewController extends Controller
     public function top()
     {
       $songs = Song::all();
-
+//ここの['songs'=>$songs]);　　のsongが　@foreach($songs as $row)ここの$songになる
       return view('Music/top',['songs'=>$songs]);
 
         //return view('Music/top');
@@ -28,55 +28,17 @@ class ViewController extends Controller
 //        dump($id);exit;
         //プライマルidとテーブルSongのuseridを照らし合わせ一致した行を取ってくる
         $songs = Song::where('user_id', '=', $id)->get();
-        return view('Music/mypage', ['songs' => $songs]);
 
-
+        $category = config('category');
+        return view('Music/mypage', ['songs' => $songs, 'category' => $category]);
     }
+
     public function uplode()
     {
         return view('Music/uplode');
     }
 
-    public function rock()
-    {
-        //$members = Member::where('カラム名',条件)->get();
 
-        $songs = Song::where('category', '=',1)->get();
-        //dump($songs);exit;
-        return view('Music/rock', ['songs' => $songs]);
-    }
-
-    public function pop()
-    {
-        //$members = Member::where('カラム名',条件)->get();
-
-        $songs = Song::where('category', '=',2)->get();
-        //dump($songs);exit;
-        return view('Music/pop', ['songs' => $songs]);
-    }
-    public function punk()
-    {
-        //$members = Member::where('カラム名',条件)->get();
-
-        $songs = Song::where('category', '=',3)->get();
-        dump($songs);exit;
-        return view('Music/punk', ['songs' => $songs]);
-    }
-    public function jazz()
-    {
-        //$members = Member::where('カラム名',条件)->get();
-
-        $songs = Song::where('category', '=',4)->get();
-        //dump($songs);exit;
-        return view('Music/jazz', ['songs' => $songs]);
-    }
-
-    public function song()
-    {
-        return view('Music/song');
-
-        //
-    }
 
 
 }

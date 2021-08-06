@@ -51,13 +51,30 @@
                     <figure class=""><img class="img-fluid ms-md-5 h-25 w-25" src="{{$row->img_file_name}}" alt=""></figure>
 
                     <ul class="mx-5 list-unstyled">
-                        <li class="h2">{{$row->user_id}}</li>
+                        <i class="fas fa-male"></i>
+                        <li class="h2">{{$row->artist}}</li>
+                        <i class="fas fa-record-vinyl"></i>
                         <li class="h3">{{$row->song_name}}</li>
+                        <i class="fas fa-guitar"></i>
+                        <li class="h6">{{ $category[$row->category] }}</li>
                     </ul>
 
                     <ul class="d-flex ms-md-auto list-unstyled">
-                        <li><button type="button">削除</button></li>
-                        <li><button type="button">編集</button></li>
+                        <form action="{{route('delete',$row)}}" method="post">
+                            @csrf
+
+                        <li><button type="submit" class="btn btn-secondary">削除</button></li>
+                        </form>
+
+                        <form action="{{route('edit',$row)}}" method="get">
+{{--                            {{dump($row)}} {{exit}}--}}
+                            @csrf
+                            <li><button type="submit" class="btn btn-secondary">編集</button></li>
+                        </form>
+
+
+                        <i class="fas fa-headphones"></i>
+                        <i class="fas fa-thumbs-up"></i>
                         <li class="">投稿日:</li>
                         <li>{{$row->created_at}}</li>
                     </ul>

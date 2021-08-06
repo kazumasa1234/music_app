@@ -54,10 +54,6 @@ class PostsController extends Controller
         $this->middleware('auth');
     }
 
-//    //viewの表示
-//    public function test() {
-//        return view('test');
-//    }
 
 
 }

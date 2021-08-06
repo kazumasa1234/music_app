@@ -29,14 +29,37 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //メイン画面
 Route::get('/top', 'ViewController@top')->name('top');
+//マイページ
 Route::get('/mypage', 'ViewController@mypage')->name('mypage');
+//曲投稿
 Route::get('/uplode', 'ViewController@uplode')->name('uplode');
+//編集
+Route::get('/edit/{song}', 'OperationController@edit')->name('edit');
 
-//ジャンル４種
-Route::get('/rock', 'ViewController@rock')->name('rock');
-Route::get('/pop', 'ViewController@pop')->name('pop');
-Route::get('/punk', 'ViewController@punk')->name('punk');
-Route::get('/jazz', 'ViewController@jazz')->name('jazz');
+//編集アップデート
+Route::post('/edit/update/{song}', 'OperationController@update')->name('update');
+
+
+
+
+//曲削除
+//{song}はSongモデルを取ってきているパラメータは小文字で書く
+//パラメータ取得はモデルと入力値の2種類ある
+Route::post('/delete/{song}', 'OperationController@delete')->name('delete');
+
+
+
+
+//ジャンル
+//パラメータ取得はモデルと入力値の2種類ある
+//これは入力値
+//受け取り<a href="{{route('category',['category' => 'rock'])}}">
+//渡す['category' => 'rock']
+Route::get('/category/{category}', 'CategoryController@category')->name('category');
+//Route::get('/rock', 'ViewController@rock')->name('rock');
+//Route::get('/pop', 'ViewController@pop')->name('pop');
+//Route::get('/punk', 'ViewController@punk')->name('punk');
+//Route::get('/jazz', 'ViewController@jazz')->name('jazz');
 
 
 
