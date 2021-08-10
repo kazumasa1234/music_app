@@ -81,18 +81,20 @@
                 </div>
                 <hr>
                 @endforeach
+
+                {{ $songs->links() }}
 {{--                ページネーション--}}
-                <div class="row offset-md-9 my-5">
-                    <nav aria-label="Page navigation">
-                        <ul class="pagination d-flex justify-content-center">
-                            <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next<</a></li>
-                        </ul>
-                    </nav>
-                </div>
+{{--                <div class="row offset-md-9 my-5">--}}
+{{--                    <nav aria-label="Page navigation">--}}
+{{--                        <ul class="pagination d-flex justify-content-center">--}}
+{{--                            <li class="page-item"><a class="page-link" href="#">Prev</a></li>--}}
+{{--                            <li class="page-item"><a class="page-link" href="#">1</a></li>--}}
+{{--                            <li class="page-item"><a class="page-link" href="#">2</a></li>--}}
+{{--                            <li class="page-item"><a class="page-link" href="#">3</a></li>--}}
+{{--                            <li class="page-item"><a class="page-link" href="#">Next<</a></li>--}}
+{{--                        </ul>--}}
+{{--                    </nav>--}}
+{{--                </div>--}}
             </div>
 
 

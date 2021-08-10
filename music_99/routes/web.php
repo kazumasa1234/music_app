@@ -35,7 +35,8 @@ Route::get('/mypage', 'ViewController@mypage')->name('mypage');
 Route::get('/uplode', 'ViewController@uplode')->name('uplode');
 //編集
 Route::get('/edit/{song}', 'OperationController@edit')->name('edit');
-
+//検索
+Route::get('/search', 'SearchController@search')->name('search');
 //編集アップデート
 Route::post('/edit/update/{song}', 'OperationController@update')->name('update');
 

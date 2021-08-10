@@ -28,7 +28,7 @@ class OperationController extends Controller
      * @param $song
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-
+//パラメーターモデル送信
     public function edit(Song $song)
     {
 

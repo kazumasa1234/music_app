@@ -9,14 +9,27 @@ class ViewController extends Controller
     /**
      * top
      */
-    public function top()
+    public function top(Request $request)
     {
-      $songs = Song::all();
-//ここの['songs'=>$songs]);　　のsongが　@foreach($songs as $row)ここの$songになる
-      return view('Music/top',['songs'=>$songs]);
+        $date = $request->input('date') ?? 'asc';
+      //$songs = Song::all();
+        $query = Song::query();
+        //$query->where('user_id', '=', 1);
+        $query->orderBy('song_name', $date);
+        $tmp = $query->paginate(3);
 
-        //return view('Music/top');
+//       $tmp = Song::paginate(4);
+    //$songs = Song::table(songs)->orderBy('song_name','desc')->get();
+//dump($songs);exit;
+//ここの['songs'=>$songs])ここは配列のなかでも特別な書き方;　　のsongが　@foreach($songs as $row)ここの$songになる
+      return view('Music/top',['songs'=>$tmp])->with('date', $date);
     }
+
+
+
+
+
+
 
     public function mypage()
     {
@@ -27,8 +40,8 @@ class ViewController extends Controller
         $id = $user->id;
 //        dump($id);exit;
         //プライマルidとテーブルSongのuseridを照らし合わせ一致した行を取ってくる
-        $songs = Song::where('user_id', '=', $id)->get();
-
+        $songs = Song::where('user_id', '=', $id)->simplepaginate(2);
+//dump($songs);exit;
         $category = config('category');
         return view('Music/mypage', ['songs' => $songs, 'category' => $category]);
     }
