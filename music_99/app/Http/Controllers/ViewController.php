@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\Nice;
 use Illuminate\Http\Request;
 use App\Models\Song;
 class ViewController extends Controller
@@ -9,7 +11,7 @@ class ViewController extends Controller
     /**
      * top
      */
-    public function top(Request $request)
+    public function top(Request $request )
     {
         $date = $request->input('date') ?? 'asc';
       //$songs = Song::all();
@@ -22,7 +24,8 @@ class ViewController extends Controller
     //$songs = Song::table(songs)->orderBy('song_name','desc')->get();
 //dump($songs);exit;
 //ここの['songs'=>$songs])ここは配列のなかでも特別な書き方;　　のsongが　@foreach($songs as $row)ここの$songになる
-      return view('Music/top',['songs'=>$tmp])->with('date', $date);
+      //return view('Music/top',['songs'=>$tmp,],compact('song','nice'))->with('date', $date);
+        return view('Music/top',['songs'=>$tmp]);
     }
 
 
@@ -43,6 +46,7 @@ class ViewController extends Controller
         $songs = Song::where('user_id', '=', $id)->simplepaginate(2);
 //dump($songs);exit;
         $category = config('category');
+        //$test = ['songs' => $songs] じゃないのが不思議
         return view('Music/mypage', ['songs' => $songs, 'category' => $category]);
     }
 
@@ -51,6 +55,13 @@ class ViewController extends Controller
         return view('Music/uplode');
     }
 
+//
+//    public function show(Post $post)
+//    {
+//
+//        $like=Nice::where('post_id', $post->id)->where('user_id', auth()->user()->id)->first();
+//        return view('post.show', compact('post', 'like'));
+//    }
 
 
 

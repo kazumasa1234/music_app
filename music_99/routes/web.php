@@ -43,6 +43,12 @@ Route::post('/edit/update/{song}', 'OperationController@update')->name('update')
 
 
 
+
+// いいねボタン
+Route::get('/nice/{song}', 'NiceController@nice')->name('nice');
+Route::get('/unnice/{song}', 'NiceController@unnice')->name('unnice');
+
+
 //曲削除
 //{song}はSongモデルを取ってきているパラメータは小文字で書く
 //パラメータ取得はモデルと入力値の2種類ある

@@ -33,6 +33,8 @@
             <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
         </div>
     </form>
+
+{{--{{ old("name", "田中") }}--}}
 {{--    "@if (isset( $keyword )) @endif"--}}
 {{--    <input type="text" name="keyword" value="@if (isset( $keyword )) $keyword @endif" placeholder="タイトル名を入力">--}}
 

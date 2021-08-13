@@ -12,7 +12,7 @@ class SearchController extends Controller
         $keyword = $request->input('keyword');
 //dd($keyword);
         $query = Song::query();
-
+//ここの$keyword で検索された値受け取り
         if (!empty($keyword)) {
             $query->where('song_name', 'like', '%' . $keyword . '%')->orWhere('artist', 'like', '%' . $keyword . '%');
         }

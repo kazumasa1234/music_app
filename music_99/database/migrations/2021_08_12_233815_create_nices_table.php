@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLikesTable extends Migration
+class CreateNicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateLikesTable extends Migration
      */
     public function up()
     {
-        Schema::create('likes', function (Blueprint $table) {
+        Schema::create('nices', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('song_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
-            $table->string('model')->comment('モデル名');
-            $table->integer('parent_id')->comment('モデルのID');
-          //会員のみいいねできる
         });
     }
 
@@ -29,6 +28,6 @@ class CreateLikesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('likes');
+        Schema::dropIfExists('nices');
     }
 }
