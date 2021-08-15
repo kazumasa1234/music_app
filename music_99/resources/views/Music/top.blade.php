@@ -36,120 +36,88 @@
                     <option value="asc">再生回数　多い</option>
                     <option value="desc">再生回数　少ない</option>
                 </select>
-                {{--            {{route('category',['category' => 'rock'])}}--}}
+                <br>
+                <p class="row offset-md-10">
+                    <button class="btn btn-secondary" type="submit">並び変え</button>
+                </p>
 
-                <button class="btn btn-secondary" type="submit">並び変え</button>
             </form>
         </div>
         <p class="row offset-md-10">
             <button class="btn btn-danger my-3" type="submit">ALL PLAY</button>
         </p>
 
-
-        <audio src="example.mp3" autoplay loop></audio>
-
-        <audio preload="metadata" controls>
-            <source src="example.mp3" type="audio/mp3">
-            <source src="example.m4a" type="audio/aac">
-            <source src="example.ogg" type="audio/ogg">
-        </audio>
         <hr>
         <!--曲-->
         <div>
-            <!--グリッドでやるやり方-->
-            <!--                    <div class="item_box row">-->
-            <!--                        <figure class="item_box__img_box col-3">-->
-            <!--                            <img class="img-fluid" src="https://picsum.photos/200/200" alt="">-->
-            <!--                        </figure>-->
-            <!--                        <div class="item_box__info_box col-9">-->
-            <!--                            <div class="item_box__info_box&#45;&#45;left float-start h-100">-->
-            <!--                                <span class="item_artist d-block fs-1">ビートルズ</span>-->
-            <!--                                <span class="item_title d-block fs-2">イエスタディ</span>-->
-            <!--                            </div>-->
-            <!--                            <div class="item_box__info_box&#45;&#45;right float-end d-flex justify-content-center align-items-center h-100">-->
-            <!--                                <span>再生回数</span>-->
-            <!--                                <span>いいね</span>-->
-            <!--                                <span>ダウンロード</span>-->
-            <!--                            </div>-->
-            <!--                        </div>-->
-            <!--                    </div>-->
 
-            <div class="d-flex align-items-end flex-wrap pt-5 justify-content-center">
 
-                <p class=""><img class="img-fluid" src="https://picsum.photos/200/200" alt=""></p>
+            {{--            <div class="d-flex align-items-end flex-wrap pt-5 justify-content-center">--}}
 
-                <ul class="mx-5 list-unstyled">
-                    <li class="h2">ビートルズ</li>
-                    <li class="h3">イエスタディ</li>
-                </ul>
+            {{--                <p class=""><img class="img-fluid" src="https://picsum.photos/200/200" alt=""></p>--}}
 
-                <ul class="d-flex push list-unstyled">
-                    <li class="mx-2">再生回数</li>
-                    <li class="mx-2">いいね</li>
-                    <li class="mx-2">ダウンロード</li>
-                </ul>
+            {{--                <ul class="mx-5 list-unstyled">--}}
+            {{--                    <li class="h2">ビートルズ</li>--}}
+            {{--                    <li class="h3">イエスタディ</li>--}}
+            {{--                </ul>--}}
 
-            </div>
-            <hr>
+            {{--                <ul class="d-flex push list-unstyled">--}}
+            {{--                    <li class="mx-2">再生回数</li>--}}
+            {{--                    <li class="mx-2">いいね</li>--}}
+            {{--                    <li class="mx-2">ダウンロード</li>--}}
+            {{--                </ul>--}}
 
+            {{--            </div>--}}
+            {{--            <hr>--}}
 
 
             @foreach($songs as $row)
 
-                <span>
-<img src="{{asset('img/nicebutton.png')}}" width="30px">
 
-                    <!-- もし$niceがあれば＝ユーザーが「いいね」をしていたら -->
-@if($row->nices()->where('user_id', '=', Auth::id())->get()->count())
-    <!-- 「いいね」取消用ボタンを表示 -->
-        <a href="{{ route('unnice', $row) }}" class="btn btn-success btn-sm">
-		いいね
-            <!-- 「いいね」の数を表示 -->
-		<span class="badge">
-			{{ $row->nices->count() }}
-		</span>
-	</a>
-@else
-    <!-- まだユーザーが「いいね」をしていなければ、「いいね」ボタンを表示 -->
-        <a href="{{ route('nice', $row) }}" class="btn btn-secondary btn-sm">
-		いいね
-            <!-- 「いいね」の数を表示 -->
-		<span class="badge">
-			{{ $row->nices->count() }}
-		</span>
-	</a>
-    @endif
-</span>
 
-                <div class="d-flex align-items-end flex-wrap pt-5 justify-content-center">
 
-                    <p class=""><img class="img-fluid w-25 h-25" src="{{$row->img_file_name}}" alt=""></p>
+                <div class="d-flex align-items-end flex-wrap pt-5 justify-content-md-between justify-content-center">
 
-                    <ul class="mx-5 list-unstyled">
+                    <p class="w-50 h-50"><img class="img-fluid" src="{{$row->img_file_name}}" alt="img"></p>
+
+                    <ul class="mx-5 list-unstyled  h-25 w-25">
                         <i class="fas fa-male"></i>
                         <li class="h1">{{ $row->artist }}</li>
                         <i class="fas fa-record-vinyl"></i>
                         <li class="h4">{{ $row->song_name }}</li>
-                        <i class="fas fa-guitar"></i>
-                        <li class="h6">{{ $row->category}}</li>
+                        {{--                        <i class="fas fa-guitar"></i>--}}
+                        {{--                        <li class="h6">{{ $row->category}}</li>--}}
+
                         <li class="">投稿日:</li>
                         <li>{{$row->created_at}}</li>
                     </ul>
 
-                    <ul class="d-flex push list-unstyled">
-                        <i class="fas fa-headphones"></i>
-                        <li class="mx-2">再生回数</li>
-                        <i class="fas fa-thumbs-up"></i>
-                        {{--                    <i class="far fa-thumbs-up"></i>--}}
-                        <li class="mx-2">いいね</li>
-                        <i class="fas fa-download"></i>
-                        <li class="mx-2">ダウンロード</li>
-                    </ul>
 
                 </div>
+
+                <span class="row">
+                    <!-- もし$niceがあれば＝ユーザーが「いいね」をしていたら -->
+            @if($row->nices()->where('user_id', '=', Auth::id())->get()->count())
+                <!-- 「いいね」取消用ボタンを表示 -->
+                    <a href="{{ route('unnice', $row) }}" class="btn btn-success btn-sm">
+		    いいね
+                        <!-- 「いいね」の数を表示 -->
+		<span class="badge">
+			{{ $row->nices->count() }}
+		</span>
+	</a>
+            @else
+                <!-- まだユーザーが「いいね」をしていなければ、「いいね」ボタンを表示 -->
+                    <a href="{{ route('nice', $row) }}" class="btn btn-secondary btn-sm">
+		いいね
+                        <!-- 「いいね」の数を表示 -->
+		<span class="badge">
+			{{ $row->nices->count() }}
+		</span>
+	</a>
+                @endif
+    </span>
                 <hr>
-
-
 
             @endforeach
         </div>
